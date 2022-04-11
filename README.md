@@ -10,6 +10,10 @@ To train the model, you can run this command:
 ```
 python train.py
 ```
+- model: EfficientB4, MCEfficientB4
+- loss: CE, MCCE, FL, FLSD
+- optim: SGD, Adam, AdamW, Ranger
+- scheduler: step, cos
 
 
 ## Experiment results
