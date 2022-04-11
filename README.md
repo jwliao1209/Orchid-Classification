@@ -17,6 +17,13 @@ python train.py
 - scheduler: step, cos
 
 
+## Test
+To test the results, you can run this command:
+```
+python test.py --checkpoint <XX-XX-XX-XX-XX> --weight <ep=XXXX-acc=0.XXXX.pth>
+```
+
+
 ## Experiment results
 <table>
   <tr>
