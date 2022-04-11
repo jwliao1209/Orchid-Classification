@@ -24,3 +24,8 @@
     <td>82.19 (ep=75)</td>
   </tr>
 </table>
+
+## Reference
+[1] FLSD: https://github.com/torrvision/focal_calibration
+[2] Ranger21: https://github.com/lessw2020/Ranger21
+[3] AutoAugment: https://github.com/DeepVoltaire/AutoAugment
