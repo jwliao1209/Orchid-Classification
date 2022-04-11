@@ -1,5 +1,18 @@
 # Orchid_Classification
 
+## Getting the code
+You can download all the files in this repository by cloning this repository:  
+https://github.com/Jia-Wei-Liao/Orchid_Classification.git
+
+
+## Training
+To train the model, you can run this command:
+```
+python train.py
+```
+
+
+## Experiment results
 <table>
   <tr>
     <td>Checkpoint</td>
