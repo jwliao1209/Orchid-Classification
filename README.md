@@ -72,7 +72,7 @@ python test.py --checkpoint <XX-XX-XX-XX-XX> --weight <ep=XXXX-acc=0.XXXX.pth>
     <td>Step (size=3, gamma=0.8)</td>
     <td>RandomResizedCrop(416),<br>RandomHorizontalFlip(p=0.5),<br>RandomRotation(degree=10),<br>Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
     <td>84.93 (ep=107)</td>
-    <td> </td>
+    <td>83.79 </td>
   </tr>
 </table>
 
