@@ -52,8 +52,8 @@ python train.py
     <td>AdamW (lr=1e-3,  weight decay=1e-4)</td>
     <td>Step (size=3, gamma=0.8)</td>
     <td>RandomResizedCrop(416),<br>RandomHorizontalFlip(p=0.5),<br>RandomRotation(degree=10),<br>Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
-    <td>86.07 (ep=75)</td>
-    <td>85.85 (ep=75)</td>
+    <td>86.07 (ep=160)</td>
+    <td>85.85</td>
   </tr>
 </table>
 
