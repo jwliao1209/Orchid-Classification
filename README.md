@@ -28,6 +28,7 @@ python train.py
     <td>Scheduler</td>
     <td>Augmentation</td>
     <td>Best val acc</td>
+    <td>test acc</td>
   </tr>
   <tr>
     <td>04-11-18-49-39</td>
@@ -50,6 +51,7 @@ python train.py
     <td>Step (size=3, gamma=0.8)</td>
     <td>RandomResizedCrop(416),<br>RandomHorizontalFlip(p=0.5),<br>RandomRotation(degree=10),<br>Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
     <td>86.07 (ep=75)</td>
+    <td>85.85 (ep=75)</td>
   </tr>
 </table>
 
