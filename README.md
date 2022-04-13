@@ -32,13 +32,12 @@ python train.py -bs <batch size> \
 - optim: SGD, Adam, AdamW, Ranger
 - scheduler: step (gamma, step_size), cos
 
-### Example
-#### EfficientNet_b4 with MCCE loss
+### For EfficientNet_b4 with MCCE loss
 ```
 python --model EfficientB4 --img_size 416 --loss MCCE
 ```
 
-#### Swin Transformer
+### For Swin Transformer
 ```
 python --model Swin --img_size 384 --lr 3e-4
 ```
@@ -139,7 +138,20 @@ python test.py --checkpoint <XX-XX-XX-XX-XX> --weight <ep=XXXX-acc=0.XXXX.pth>
   </tr>
 </table>
 
+
 ## Reference
-[1] FLSD: https://github.com/torrvision/focal_calibration  
-[2] Ranger21: https://github.com/lessw2020/Ranger21  
-[3] AutoAugment: https://github.com/DeepVoltaire/AutoAugment  
+[1] MCCE: https://github.com/Kurumi233/Mutual-Channel-Loss
+[2] FLSD: https://github.com/torrvision/focal_calibration  
+[3] Ranger21: https://github.com/lessw2020/Ranger21  
+[4] AutoAugment: https://github.com/DeepVoltaire/AutoAugment  
+
+
+## Citation
+```
+@misc{
+    title = {nuclear_dataset_segmentation},
+    author = {Jia-Wei Liao, Kuok-Tong Ng, Yi-Cheng Hung},
+    url = {https://github.com/Jia-Wei-Liao/Ultrasound_Nerve_Segmentation},
+    year = {2022}
+}
+```
