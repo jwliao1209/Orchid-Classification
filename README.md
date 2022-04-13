@@ -39,7 +39,7 @@ python --model EfficientB4 --img_size 416 --loss MCCE
 
 ### For Swin Transformer
 ```
-python --model Swin --img_size 384 --lr 3e-4
+python --model Swin --pretrain 1 --img_size 384 --lr 3e-4
 ```
 
 
