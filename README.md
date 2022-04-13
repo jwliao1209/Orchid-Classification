@@ -140,7 +140,7 @@ python test.py --checkpoint <XX-XX-XX-XX-XX> --weight <ep=XXXX-acc=0.XXXX.pth>
 
 
 ## Reference
-[1] MCCE: https://github.com/Kurumi233/Mutual-Channel-Loss
+[1] MCCE: https://github.com/Kurumi233/Mutual-Channel-Loss  
 [2] FLSD: https://github.com/torrvision/focal_calibration  
 [3] Ranger21: https://github.com/lessw2020/Ranger21  
 [4] AutoAugment: https://github.com/DeepVoltaire/AutoAugment  
@@ -149,9 +149,9 @@ python test.py --checkpoint <XX-XX-XX-XX-XX> --weight <ep=XXXX-acc=0.XXXX.pth>
 ## Citation
 ```
 @misc{
-    title = {orchid_classification},
+    title  = {orchid_classification},
     author = {Jia-Wei Liao, Yu-Hsi Chen, Jing-Lun Huang, Kuok-Tong Ng},
-    url = {https://github.com/Jia-Wei-Liao/Orchid_Classification},
-    year = {2022}
+    url    = {https://github.com/Jia-Wei-Liao/Orchid_Classification},
+    year   = {2022}
 }
 ```
