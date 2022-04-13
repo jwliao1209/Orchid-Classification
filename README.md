@@ -13,6 +13,7 @@ python train.py -bs <batch size> \
                 -ep <epoch> \
                 --model <model> \
                 --pretrain <using pretrained-weight> \
+                --img_size <crop and resize to img_size> \
                 --loss <loss function> \
                 --optim <optimizer> \
                 --lr <learning rate> \
@@ -26,10 +27,21 @@ python train.py -bs <batch size> \
                 --device <gpu id> \
                 --seed <random seed>
 ```
-- model: EfficientB4, MCEfficientB4, Swin
+- model: EfficientB4, Swin
 - loss: CE, MCCE, FL, FLSD
 - optim: SGD, Adam, AdamW, Ranger
-- scheduler: step (gamma, step_size), cos 
+- scheduler: step (gamma, step_size), cos
+
+### Example
+#### EfficientNet_b4 with MCCE loss
+```
+python --model EfficientB4 --img_size 416 --loss MCCE
+```
+
+#### Swin Transformer
+```
+python --model Swin --img_size 384 --lr 3e-4
+```
 
 
 ## Test
