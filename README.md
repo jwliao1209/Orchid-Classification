@@ -20,9 +20,10 @@ python train.py -bs <batch size> \
                 --scheduler <learning rate schedule> \
                 --autoaugment <use autoaugmentation> \
                 --rot_degree <degree of rotation> \
-                --fliplr <probabiliy of horizontal flip>
-                --noise <probabiliy of adding gaussian noise>
-                --num_workers <number worker> --device <gpu id> \
+                --fliplr <probabiliy of horizontal flip> \
+                --noise <probabiliy of adding gaussian noise> \
+                --num_workers <number worker> \
+                --device <gpu id> \
                 --seed <random seed>
 ```
 - model: EfficientB4, MCEfficientB4, Swin
