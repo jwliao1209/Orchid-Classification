@@ -43,7 +43,7 @@ python --model Swin --img_size 384 --lr 3e-4
 ```
 
 
-## Test
+## Testing
 To test the results, you can run this command:
 ```
 python test.py --checkpoint <XX-XX-XX-XX-XX> --weight <ep=XXXX-acc=0.XXXX.pth>
@@ -139,11 +139,12 @@ python test.py --checkpoint <XX-XX-XX-XX-XX> --weight <ep=XXXX-acc=0.XXXX.pth>
 </table>
 
 
-## Reference
-[1] MCCE: https://github.com/Kurumi233/Mutual-Channel-Loss  
-[2] FLSD: https://github.com/torrvision/focal_calibration  
-[3] Ranger21: https://github.com/lessw2020/Ranger21  
-[4] AutoAugment: https://github.com/DeepVoltaire/AutoAugment  
+## GitHub Acknowledgement
+We thank the authors of these repositories:
+- MCCE: https://github.com/Kurumi233/Mutual-Channel-Loss  
+- FLSD: https://github.com/torrvision/focal_calibration  
+- Ranger21: https://github.com/lessw2020/Ranger21  
+- AutoAugment: https://github.com/DeepVoltaire/AutoAugment  
 
 
 ## Citation
