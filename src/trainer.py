@@ -9,7 +9,7 @@ def compute_acc(pred, label):
     return acc
 
 
-def train_step(ep, model, train_loader, criterion, optimizer, device):
+def train_step(ep, model, train_loader, criterion, use_mc_loss, optimizer, device):
     model.train()
     total_num, correct, total_loss = 0, 0, 0
     train_bar = tqdm(train_loader, desc=f'Training {ep}')
@@ -20,16 +20,17 @@ def train_step(ep, model, train_loader, criterion, optimizer, device):
         label = label.to(device)
         
         optimizer.zero_grad()
-        pred = model(image, training=True)
-        loss = criterion(pred, label)
+
+        if use_mc_loss:
+            pred, feature = model(image, use_mc_loss=True)
+            loss = criterion(pred, feature, label)
+
+        else:
+            pred = model(image)
+            loss = criterion(pred, label)
+
         loss.backward()
         optimizer.step()
-
-        try:
-            pred = pred, _
-
-        except:
-            pass
 
         acc = compute_acc(pred, label)
         num = image.shape[0]
@@ -54,7 +55,7 @@ def train_step(ep, model, train_loader, criterion, optimizer, device):
     return train_record
 
 
-def val_step(ep, model, val_loader, criterion, device):
+def val_step(ep, model, val_loader, criterion, use_mc_loss, device):
     model.eval()
     total_num, correct, total_loss = 0, 0, 0
     val_bar = tqdm(val_loader, desc=f'Validation {ep}')
@@ -64,14 +65,14 @@ def val_step(ep, model, val_loader, criterion, device):
             image, label = batch_data
             image = image.to(device)
             label = label.to(device)
-            pred = model(image, training=True)
-            loss = criterion(pred, label)
 
-            try:
-                pred = pred, _
+            if use_mc_loss:
+                pred, feature = model(image, use_mc_loss=True)
+                loss = criterion(pred, feature, label)
 
-            except:
-                pass
+            else:
+                pred = model(image)
+                loss = criterion(pred, label)
 
             acc = compute_acc(pred, label)
             num = image.shape[0]

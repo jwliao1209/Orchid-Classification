@@ -40,7 +40,7 @@ class MCCE_Loss(nn.Module):
         self.celoss = nn.CrossEntropyLoss()
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
 
-    def forward(self, outputs, targets):
+    def forward(self, preds, feats, targets):
         '''
         B: batch size, C: channels, H: height, W: width
         params:
@@ -48,7 +48,6 @@ class MCCE_Loss(nn.Module):
             preds: predictions, shape=(B,num_class)
             targets: targets,   shape=(B,)
         '''
-        preds, feats = outputs
         B, C, H, W = feats.size()
         sp = self.sp
 

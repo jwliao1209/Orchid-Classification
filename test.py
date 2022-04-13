@@ -8,6 +8,7 @@ from src.config import *
 from src.dataset import get_test_loader
 from src.trainer import compute_acc
 from src.utils import *
+from sklearn.metrics import classification_report
 
 
 def test(args):
@@ -20,6 +21,8 @@ def test(args):
     model.eval()
     total_num, correct = 0, 0
     test_bar = tqdm(test_loader, desc=f'Testing')
+    pred_list = []
+    label_list = []
 
     with torch.no_grad():
         for batch_data in test_bar:
@@ -31,6 +34,9 @@ def test(args):
             num = image.shape[0]
             total_num += num
             correct += acc * num
+            pred = pred.argmax(dim=1)
+            pred_list += list(pred.cpu().numpy())
+            label_list += list(label.cpu().numpy())
 
             del image, label, pred
             mean_acc = correct / total_num
@@ -38,6 +44,10 @@ def test(args):
                 'acc': f"{mean_acc:.5f}"
             })
         test_bar.close()
+
+    print(classification_report(label_list, pred_list, target_names=[str(i) for i in range(219)]))
+
+    
 
     return
 

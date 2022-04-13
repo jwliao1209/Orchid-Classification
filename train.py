@@ -31,6 +31,7 @@ def train(args):
     train_loader, val_loader = get_train_val_loader(args)
 
     model = get_model(args)
+    model = get_pretrain(model, args)
     model = nn.DataParallel(model, device_ids=args.device)
     model.to(device)
 
@@ -38,11 +39,17 @@ def train(args):
     optimizer = get_optimizer(args, model)
     lr_scheduler = get_scheduler(args, optimizer)
 
+    if args.loss == 'MCCE':
+        use_mc_loss = True
+
+    else:
+        use_mc_loss = False
+
     # Training
     for ep in range(1, args.epoch+1):
         # training step
         train_record = train_step(
-            ep, model, train_loader, criterion, optimizer, device)
+            ep, model, train_loader, criterion, use_mc_loss, optimizer, device)
         log.add(
             epoch=ep,
             type='train',
@@ -51,7 +58,7 @@ def train(args):
         )
 
         # validation step
-        val_record = val_step(ep, model, val_loader, criterion, device)
+        val_record = val_step(ep, model, val_loader, criterion, use_mc_loss, device)
         log.add(
             epoch=ep,
             type='val',
@@ -68,7 +75,7 @@ def train(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('-bs', '--batch_size', type=int, default=64,
+    parser.add_argument('-bs', '--batch_size', type=int, default=32,
                         help='batch size')
     parser.add_argument('-ep', '--epoch', type=int, default=200,
                         help='epochs')
@@ -76,6 +83,10 @@ if __name__ == '__main__':
                         help='number of classes')
     parser.add_argument('--model', type=str, default='EfficientB4',
                         help='model')
+    parser.add_argument('--pretrain', type=bool, default=0,
+                        help='pretrained weight')
+    parser.add_argument('--img_size', type=int, default=384,
+                        help='crop and resize to img_size')
 
     # set optimization
     parser.add_argument('--loss', type=str, default='CE',
@@ -94,7 +105,7 @@ if __name__ == '__main__':
                         help='learning rate decay factor')
 
     # augmentation
-    parser.add_argument('--autoaugment', type=bool, default=0,
+    parser.add_argument('--autoaugment', type=bool, default=1,
                         help='autoaugmentation')
     parser.add_argument('--rot_degree', type=float, default=10,
                         help='degree of rotation')

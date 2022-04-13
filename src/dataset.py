@@ -4,8 +4,7 @@ from torchvision import datasets
 from torch.utils.data import DataLoader
 from torchvision.transforms import Compose, RandomHorizontalFlip, RandomRotation, ToTensor, Normalize, RandomResizedCrop, CenterCrop
 
-from src.transforms import *
-from src.autoaugment import AutoAugmentation
+from src.transforms import RandomNoise, GridMask, AutoAugmentation
 
 
 def get_train_val_loader(args):
@@ -13,7 +12,7 @@ def get_train_val_loader(args):
     std = (0.229, 0.224, 0.225)
     
     train_transform = Compose([
-        RandomResizedCrop(416),
+        RandomResizedCrop(args.img_size),
         RandomHorizontalFlip(p=args.fliplr),
         RandomRotation(degrees=args.rot_degree),
         AutoAugmentation(opt=args.autoaugment),
@@ -25,7 +24,7 @@ def get_train_val_loader(args):
     ])
 
     val_transform = Compose([
-        CenterCrop(416),
+        CenterCrop(args.img_size),
         ToTensor(),
         Normalize(mean, std),
     ])
@@ -44,7 +43,7 @@ def get_test_loader(args):
     std = (0.229, 0.224, 0.225)
 
     test_transform = Compose([
-        CenterCrop(416),
+        CenterCrop(args.img_size),
         ToTensor(),
         Normalize(mean, std),
     ])
