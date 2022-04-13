@@ -12,6 +12,7 @@ To train the model, you can run this command:
 python train.py -bs <batch size> \
                 -ep <epoch> \
                 --model <model> \
+                --pretrain <using pretrained-weight> \
                 --loss <loss function> \
                 --optim <optimizer> \
                 --lr <learning rate> \
