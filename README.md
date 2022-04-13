@@ -149,9 +149,9 @@ python test.py --checkpoint <XX-XX-XX-XX-XX> --weight <ep=XXXX-acc=0.XXXX.pth>
 ## Citation
 ```
 @misc{
-    title = {nuclear_dataset_segmentation},
-    author = {Jia-Wei Liao, Kuok-Tong Ng, Yi-Cheng Hung},
-    url = {https://github.com/Jia-Wei-Liao/Ultrasound_Nerve_Segmentation},
+    title = {orchid_classification},
+    author = {Jia-Wei Liao, Yu-Hsi Chen, Jing-Lun Huang, Kuok-Tong Ng},
+    url = {https://github.com/Jia-Wei-Liao/Orchid_Classification},
     year = {2022}
 }
 ```
