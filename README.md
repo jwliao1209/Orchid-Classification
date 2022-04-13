@@ -9,12 +9,25 @@ git clone https://github.com/Jia-Wei-Liao/Orchid_Classification.git
 ## Training
 To train the model, you can run this command:
 ```
-python train.py
+python train.py -bs <batch size> \
+                -ep <epoch> \
+                --model <model> \
+                --loss <loss function> \
+                --optim <optimizer> \
+                --lr <learning rate> \
+                --weight_decay <parameter weight decay> \
+                --scheduler <learning rate schedule> \
+                --autoaugment <use autoaugmentation> \
+                --rot_degree <degree of rotation> \
+                --fliplr <probabiliy of horizontal flip>
+                --noise <probabiliy of adding gaussian noise>
+                --num_workers <number worker> --device <gpu id> \
+                --seed <random seed>
 ```
-- model: EfficientB4, MCEfficientB4
+- model: EfficientB4, MCEfficientB4, Swin
 - loss: CE, MCCE, FL, FLSD
 - optim: SGD, Adam, AdamW, Ranger
-- scheduler: step, cos
+- scheduler: step (gamma, step_size), cos 
 
 
 ## Test
