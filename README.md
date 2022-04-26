@@ -34,12 +34,12 @@ python train.py -bs <batch size> \
 
 ### For EfficientNet_b4 with MCCE loss
 ```
-python --model EfficientB4 --img_size 416 --loss MCCE
+python train.py --model EfficientB4 --img_size 416 --loss MCCE
 ```
 
 ### For Swin Transformer
 ```
-python --model Swin --pretrain 1 --img_size 384 -bs 64 --lr 3e-4
+python train.py --model Swin --pretrain 1 --img_size 384 -bs 64 --lr 3e-4
 ```
 
 
