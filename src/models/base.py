@@ -13,3 +13,11 @@ class BaseModule(nn.Module):
         self.load_state_dict(checkpoint)
 
         return
+
+
+class AutoEncoder(BaseModule):
+    def __init__(self, ):
+        pass
+
+    def forward(self, inputs):
+        return 

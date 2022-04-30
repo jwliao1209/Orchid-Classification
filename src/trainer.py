@@ -95,3 +95,68 @@ def val_step(ep, model, val_loader, criterion, use_mc_loss, device):
         }
 
     return val_record
+
+
+def ssl_train_step(ep, model, train_loader, criterion, optimizer, device):
+    model.train()
+    total_num, total_loss = 0, 0
+    train_bar = tqdm(train_loader, desc=f'Training {ep}')
+
+    for batch_data in train_bar:
+        image, label = batch_data
+        image = image.to(device)
+        
+        optimizer.zero_grad()
+        pred = model(image)
+        loss = criterion(pred, label)
+
+        loss.backward()
+        optimizer.step()
+
+        num = image.shape[0]
+        total_num += num
+        total_loss += loss.item()
+
+        del image, pred
+        mean_loss = total_loss / total_num
+        train_bar.set_postfix({
+            'loss': f"{mean_loss:.4f}",
+        })
+
+    train_bar.close()
+    train_record = {
+        'loss': f"{mean_loss:.4f}",
+    }
+
+    return train_record
+
+
+def ssl_val_step(ep, model, val_loader, criterion, device):
+    model.eval()
+    total_num, total_loss = 0, 0
+    val_bar = tqdm(val_loader, desc=f'Validation {ep}')
+
+    with torch.no_grad():
+        for batch_data in val_bar:
+            image, label = batch_data
+            image = image.to(device)
+
+            pred = model(image)
+            loss = criterion(pred, label)
+
+            num = image.shape[0]
+            total_num += num
+            total_loss += loss.item()
+
+            del image, pred
+            mean_loss = total_loss / total_num
+            val_bar.set_postfix({
+                'loss': f"{mean_loss:.5f}",
+            })
+
+        val_bar.close()
+        val_record = {
+        'loss': f"{mean_loss:.4f}",
+        }
+
+    return val_record

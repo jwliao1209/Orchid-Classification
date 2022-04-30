@@ -10,7 +10,7 @@ import torch
 
 def load_pretrained(model):
     #logger.info(f"==============> Loading weight for fine-tuning......")
-    checkpoint = torch.load('./src/swin/pretrain_weight/swin_base_patch4_window12_384_22k.pth', map_location='cpu')
+    checkpoint = torch.load('./src/models/pretrain_weight/swin_base_patch4_window12_384_22k.pth', map_location='cpu')
     state_dict = checkpoint['model']
 
     # delete relative_position_index since we always re-init it
