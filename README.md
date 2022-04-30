@@ -58,7 +58,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>checkpoint</td>
     <td>model</td>
     <td>bs</td>
-    <td>epochs</td>
     <td>loss</td>
     <td>optimizer</td>
     <td>scheduler</td>
@@ -69,7 +68,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-11-23-42-37</td>
     <td>EfficientNet-b4</td>
     <td>16</td>
-    <td>200</td>
     <td>CE</td>
     <td>AdamW (lr=1e-3)</td>
     <td>Step</td>
@@ -80,7 +78,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-11-23-58-50</td>
     <td>EfficientNet-b4</td>
     <td>16</td>
-    <td>200</td>
     <td>MCCE</td>
     <td>AdamW (lr=1e-3)</td>
     <td>Step</td>
@@ -91,7 +88,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-12-00-14-06</td>
     <td>EfficientNet-b4</td>
     <td>32</td>
-    <td>200</td>
     <td>FLSD</td>
     <td>AdamW (lr=1e-3)</td>
     <td>Step</td>
@@ -102,7 +98,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-12-00-14-06</td>
     <td>EfficientNet-b4</td>
     <td>32</td>
-    <td>200</td>
     <td>FLSD</td>
     <td>AdamW (lr=5e-3)</td>
     <td>Step</td>
@@ -113,7 +108,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-12-01-49-02</td>
     <td>EfficientNet-b4</td>
     <td>32</td>
-    <td>200</td>
     <td>CE</td>
     <td>AdamW (lr=1e-3)</td>
     <td>Step</td>
@@ -124,7 +118,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-12-02-08-09</td>
     <td>EfficientNet-b4</td>
     <td>8</td>
-    <td>200</td>
     <td>CE</td>
     <td>AdamW (lr=1e-3)</td>
     <td>Step</td>
@@ -135,7 +128,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-12-02-09-10</td>
     <td>EfficientNet-b4</td>
     <td>16</td>
-    <td>200</td>
     <td>FL</td>
     <td>AdamW (lr=1e-3)</td>
     <td>Step</td>
@@ -146,7 +138,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-12-02-19-38</td>
     <td>EfficientNet-b4</td>
     <td>16</td>
-    <td>200</td>
     <td>FLSD</td>
     <td>AdamW (lr=1e-3)</td>
     <td>Step</td>
@@ -157,7 +148,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-12-16-01-10</td>
     <td>Swin</td>
     <td>32</td>
-    <td>200</td>
     <td>CE</td>
     <td>AdamW (lr=3e-4)</td>
     <td>Step</td>
@@ -168,7 +158,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-13-19-57-43</td>
     <td>Swin</td>
     <td>32</td>
-    <td>200</td>
     <td>FL</td>
     <td>AdamW (lr=3e-4)</td>
     <td>Step</td>
@@ -179,7 +168,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-13-19-57-43</td>
     <td>Swin</td>
     <td>64</td>
-    <td>200</td>
     <td>FL</td>
     <td>AdamW (lr=3e-4)</td>
     <td>Step</td>
@@ -190,7 +178,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-19-13-58-40</td>
     <td>ConvB</td>
     <td>64</td>
-    <td>200</td>
     <td>FL</td>
     <td>AdamW (lr=3e-4)</td>
     <td>Step</td>
@@ -201,7 +188,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-19-21-12-43</td>
     <td>ConvB</td>
     <td>64</td>
-    <td>200</td>
     <td>FL</td>
     <td>AdamW (lr=3e-4)</td>
     <td>Step</td>
@@ -212,7 +198,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-19-21-12-43</td>
     <td>ConvB</td>
     <td>64</td>
-    <td>200</td>
     <td>FLSD</td>
     <td>AdamW (lr=3e-4)</td>
     <td>Step</td>
@@ -223,7 +208,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-27-17-28-28</td>
     <td>CSwin</td>
     <td>32</td>
-    <td>200</td>
     <td>FL</td>
     <td>AdamW (lr=3e-5)</td>
     <td>Step</td>
@@ -234,7 +218,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-27-19-58-18</td>
     <td>CSwin</td>
     <td>32</td>
-    <td>200</td>
     <td>FL</td>
     <td>AdamW (lr=1e-4)</td>
     <td>Step</td>
@@ -245,7 +228,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>04-27-21-12-57</td>
     <td>CSwin</td>
     <td>32</td>
-    <td>200</td>
     <td>FL</td>
     <td>AdamW (lr=8e-5)</td>
     <td>Step</td>
