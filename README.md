@@ -51,7 +51,7 @@ python test.py --checkpoint <XX-XX-XX-XX-XX> --weight <ep=XXXX-acc=0.XXXX.pth>
 
 
 ## Experiment results
-Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), RandomRotation(degree=10), Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)), RandomNoise(p=0.1) as preprocessing.
+Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), RandomRotation(degree=10), Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)), RandomNoise(p=0.1) and Autoaugmentation as preprocessing.
 
 <table>
   <tr>
@@ -66,47 +66,14 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>test acc</td>
   </tr>
   <tr>
-    <td>04-11-18-49-39</td>
-    <td>EfficientNet-b4</td>
-    <td>32</td>
-    <td>200</td>
-    <td>CE</td>
-    <td>AdamW (lr=1e-3)</td>
-    <td>Step (size=3, r=0.8)</td>
-    <td>85.62</td>
-    <td>84.27 </td>
-  </tr>
-  <tr>
-    <td>04-11-20-01-09</td>
-    <td>EfficientNet-b4</td>
-    <td>32</td>
-    <td>200</td>
-    <td>FLSD</td>
-    <td>AdamW (lr=1e-3)</td>
-    <td>Step (size=3, r=0.8)</td>
-    <td>86.07</td>
-    <td>85.85</td>
-  </tr>
-    <tr>
-    <td>04-11-21-51-39</td>
-    <td>EfficientNet-b4</td>
-    <td>32</td>
-    <td>200</td>
-    <td>MCCE</td>
-    <td>AdamW (lr=1e-3)</td>
-    <td>Step (size=3, r=0.8)</td>
-    <td>84.93</td>
-    <td>83.79 </td>
-  </tr>
-  <tr>
     <td>04-11-23-42-37</td>
     <td>EfficientNet-b4</td>
     <td>16</td>
     <td>200</td>
     <td>CE</td>
     <td>AdamW (lr=1e-3)</td>
-    <td>Step (size=3, r=0.8)</td>
-    <td>86.30</td>
+    <td>Step</td>
+    <td>0.8630</td>
     <td> </td>
   </tr>
   <tr>
@@ -116,8 +83,52 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>200</td>
     <td>MCCE</td>
     <td>AdamW (lr=1e-3)</td>
-    <td>Step (size=3, r=0.8)</td>
-    <td>85.84</td>
+    <td>Step</td>
+    <td>0.8584</td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>04-12-00-14-06</td>
+    <td>EfficientNet-b4</td>
+    <td>32</td>
+    <td>200</td>
+    <td>FLSD</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step</td>
+    <td>0.8607</td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>04-12-00-14-06</td>
+    <td>EfficientNet-b4</td>
+    <td>32</td>
+    <td>200</td>
+    <td>FLSD</td>
+    <td>AdamW (lr=5e-3)</td>
+    <td>Step</td>
+    <td>0.8402</td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>04-12-01-49-02</td>
+    <td>EfficientNet-b4</td>
+    <td>32</td>
+    <td>200</td>
+    <td>CE</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step</td>
+    <td>0.8402</td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>04-12-02-08-09</td>
+    <td>EfficientNet-b4</td>
+    <td>8</td>
+    <td>200</td>
+    <td>CE</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step</td>
+    <td>0.8447 </td>
     <td> </td>
   </tr>
   <tr>
@@ -127,12 +138,121 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>200</td>
     <td>FL</td>
     <td>AdamW (lr=1e-3)</td>
-    <td>Step (size=3, r=0.8)</td>
-    <td>86.99</td>
+    <td>Step</td>
+    <td>0.8699 </td>
     <td> </td>
   </tr>
-</table>
-
+  <tr>
+    <td>04-12-02-19-38</td>
+    <td>EfficientNet-b4</td>
+    <td>16</td>
+    <td>200</td>
+    <td>FLSD</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step</td>
+    <td>0.8470 </td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>04-12-16-01-10</td>
+    <td>Swin</td>
+    <td>32</td>
+    <td>200</td>
+    <td>CE</td>
+    <td>AdamW (lr=3e-4)</td>
+    <td>Step</td>
+    <td>0.8927 </td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-13-19-57-43</td>
+    <td>Swin</td>
+    <td>32</td>
+    <td>200</td>
+    <td>FL</td>
+    <td>AdamW (lr=3e-4)</td>
+    <td>Step</td>
+    <td>0.9110 </td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-13-19-57-43</td>
+    <td>Swin</td>
+    <td>64</td>
+    <td>200</td>
+    <td>FL</td>
+    <td>AdamW (lr=3e-4)</td>
+    <td>Step</td>
+    <td>0.9110</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-19-13-58-40</td>
+    <td>ConvB</td>
+    <td>64</td>
+    <td>200</td>
+    <td>FL</td>
+    <td>AdamW (lr=3e-4)</td>
+    <td>Step</td>
+    <td>0.8836</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-19-21-12-43</td>
+    <td>ConvB</td>
+    <td>64</td>
+    <td>200</td>
+    <td>FL</td>
+    <td>AdamW (lr=3e-4)</td>
+    <td>Step</td>
+    <td>0.8699</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-19-21-12-43</td>
+    <td>ConvB</td>
+    <td>64</td>
+    <td>200</td>
+    <td>FLSD</td>
+    <td>AdamW (lr=3e-4)</td>
+    <td>Step</td>
+    <td>0.8836</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-27-17-28-28</td>
+    <td>CSwin</td>
+    <td>32</td>
+    <td>200</td>
+    <td>FL</td>
+    <td>AdamW (lr=3e-5)</td>
+    <td>Step</td>
+    <td>0.8676</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-27-19-58-18</td>
+    <td>CSwin</td>
+    <td>32</td>
+    <td>200</td>
+    <td>FL</td>
+    <td>AdamW (lr=1e-4)</td>
+    <td>Step</td>
+    <td>0.8858</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-27-21-12-57</td>
+    <td>CSwin</td>
+    <td>32</td>
+    <td>200</td>
+    <td>FL</td>
+    <td>AdamW (lr=8e-5)</td>
+    <td>Step</td>
+    <td>0.8744</td>
+    <td> - </td>
+  </tr>
+<table>
 
 ## GitHub Acknowledgement
 We thank the authors of these repositories:
