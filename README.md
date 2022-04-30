@@ -66,7 +66,7 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
   </tr>
   <tr>
     <td>04-11-23-42-37</td>
-    <td>EfficientNet-b4</td>
+    <td>EfficientNet-B4</td>
     <td>16</td>
     <td>CE</td>
     <td>AdamW (lr=1e-3)</td>
@@ -76,7 +76,7 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
   </tr>
   <tr>
     <td>04-11-23-58-50</td>
-    <td>EfficientNet-b4</td>
+    <td>EfficientNet-B4</td>
     <td>16</td>
     <td>MCCE</td>
     <td>AdamW (lr=1e-3)</td>
@@ -86,7 +86,7 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
   </tr>
   <tr>
     <td>04-12-00-14-06</td>
-    <td>EfficientNet-b4</td>
+    <td>EfficientNet-B4</td>
     <td>32</td>
     <td>FLSD</td>
     <td>AdamW (lr=1e-3)</td>
@@ -96,7 +96,7 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
   </tr>
   <tr>
     <td>04-12-00-14-06</td>
-    <td>EfficientNet-b4</td>
+    <td>EfficientNet-B4</td>
     <td>32</td>
     <td>FLSD</td>
     <td>AdamW (lr=5e-3)</td>
@@ -106,7 +106,7 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
   </tr>
   <tr>
     <td>04-12-01-49-02</td>
-    <td>EfficientNet-b4</td>
+    <td>EfficientNet-B4</td>
     <td>32</td>
     <td>CE</td>
     <td>AdamW (lr=1e-3)</td>
@@ -116,7 +116,7 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
   </tr>
   <tr>
     <td>04-12-02-08-09</td>
-    <td>EfficientNet-b4</td>
+    <td>EfficientNet-B4</td>
     <td>8</td>
     <td>CE</td>
     <td>AdamW (lr=1e-3)</td>
@@ -126,7 +126,7 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
   </tr>
   <tr>
     <td>04-12-02-09-10</td>
-    <td>EfficientNet-b4</td>
+    <td>EfficientNet-B4</td>
     <td>16</td>
     <td>FL</td>
     <td>AdamW (lr=1e-3)</td>
@@ -136,7 +136,7 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
   </tr>
   <tr>
     <td>04-12-02-19-38</td>
-    <td>EfficientNet-b4</td>
+    <td>EfficientNet-B4</td>
     <td>16</td>
     <td>FLSD</td>
     <td>AdamW (lr=1e-3)</td>
@@ -176,7 +176,7 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
   </tr>
   <tr>
     <td>04-19-13-58-40</td>
-    <td>ConvB</td>
+    <td>ConvNext-B</td>
     <td>64</td>
     <td>FL</td>
     <td>AdamW (lr=3e-4)</td>
@@ -186,7 +186,7 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
   </tr>
   <tr>
     <td>04-19-21-12-43</td>
-    <td>ConvB</td>
+    <td>ConvNext-B</td>
     <td>64</td>
     <td>FL</td>
     <td>AdamW (lr=3e-4)</td>
@@ -196,7 +196,7 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
   </tr>
   <tr>
     <td>04-19-21-12-43</td>
-    <td>ConvB</td>
+    <td>ConvNext-B</td>
     <td>64</td>
     <td>FLSD</td>
     <td>AdamW (lr=3e-4)</td>
