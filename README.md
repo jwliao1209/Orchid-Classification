@@ -55,14 +55,14 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
 
 <table>
   <tr>
-    <td>Checkpoint</td>
-    <td>Model</td>
-    <td>Batch size</td>
-    <td>Epochs</td>
-    <td>Loss</td>
-    <td>Optimizer</td>
-    <td>Scheduler</td>
-    <td>Best val acc</td>
+    <td>checkpoint</td>
+    <td>model</td>
+    <td>bs</td>
+    <td>epochs</td>
+    <td>loss</td>
+    <td>optimizer</td>
+    <td>scheduler</td>
+    <td>val acc</td>
     <td>test acc</td>
   </tr>
   <tr>
@@ -71,9 +71,9 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>32</td>
     <td>200</td>
     <td>CE</td>
-    <td>AdamW (lr=1e-3,  weight decay=1e-4)</td>
-    <td>Step (size=3, gamma=0.8)</td>
-    <td>85.62 (ep=75) </td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step (size=3, r=0.8)</td>
+    <td>85.62</td>
     <td>84.27 </td>
   </tr>
   <tr>
@@ -82,9 +82,9 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>32</td>
     <td>200</td>
     <td>FLSD</td>
-    <td>AdamW (lr=1e-3,  weight decay=1e-4)</td>
-    <td>Step (size=3, gamma=0.8)</td>
-    <td>86.07 (ep=160)</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step (size=3, r=0.8)</td>
+    <td>86.07</td>
     <td>85.85</td>
   </tr>
     <tr>
@@ -93,9 +93,9 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>32</td>
     <td>200</td>
     <td>MCCE</td>
-    <td>AdamW (lr=1e-3,  weight decay=1e-4)</td>
-    <td>Step (size=3, gamma=0.8)</td>
-    <td>84.93 (ep=107)</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step (size=3, r=0.8)</td>
+    <td>84.93</td>
     <td>83.79 </td>
   </tr>
   <tr>
@@ -104,9 +104,9 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>16</td>
     <td>200</td>
     <td>CE</td>
-    <td>AdamW (lr=1e-3,  weight decay=1e-4)</td>
-    <td>Step (size=3, gamma=0.8)</td>
-    <td>86.30 (ep=36)</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step (size=3, r=0.8)</td>
+    <td>86.30</td>
     <td> </td>
   </tr>
   <tr>
@@ -115,9 +115,9 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>16</td>
     <td>200</td>
     <td>MCCE</td>
-    <td>AdamW (lr=1e-3,  weight decay=1e-4)</td>
-    <td>Step (size=3, gamma=0.8)</td>
-    <td>85.84 (ep=92)</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step (size=3, r=0.8)</td>
+    <td>85.84</td>
     <td> </td>
   </tr>
   <tr>
@@ -126,9 +126,9 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>16</td>
     <td>200</td>
     <td>FL</td>
-    <td>AdamW (lr=1e-3,  weight decay=1e-4)</td>
-    <td>Step (size=3, gamma=0.8)</td>
-    <td>86.99 (ep=92)</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step (size=3, r=0.8)</td>
+    <td>86.99</td>
     <td> </td>
   </tr>
 </table>
