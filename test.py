@@ -11,14 +11,35 @@ from src.utils import *
 from sklearn.metrics import classification_report
 
 
+def get_topk_ckpt(weight_path, topk):
+    topk_ckpt = []
+
+    for c, t in zip(weight_path, topk):
+        weight_list = sorted(
+            glob.glob(os.path.join('checkpoint', c, 'weight', '*.pth')),
+            key=lambda x: float(x[-10:-4]), reverse=True)
+
+        topk_ckpt += weight_list[:t]
+
+    return topk_ckpt
+
+
+def init_model(models, ckpts, device):
+    for m, c in zip(models, ckpts):
+        m.load(c)
+        m.to(device)
+        m.eval()
+
+    return models
+
+
 def test(args):
     test_loader = get_test_loader(args)
-    model = get_model(args)
-    model.load(os.path.join('checkpoint', args.checkpoint, 'weight', args.weight))
+    models = [get_model(args) for i in range(sum(args.topk))]
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    model.to(device)
+    topk_ckpt = get_topk_ckpt(args.checkpoint, args.topk)
+    models = init_model(models, topk_ckpt, device)
 
-    model.eval()
     total_num, correct = 0, 0
     test_bar = tqdm(test_loader, desc=f'Testing')
     pred_list = []
@@ -29,7 +50,9 @@ def test(args):
             image, label = batch_data
             image = image.to(device)
             label = label.to(device)
-            pred = model(image)
+
+            pred = torch.mean(torch.stack([m(image) for m in models], dim=0), dim=0)
+
             acc = compute_acc(pred, label)
             num = image.shape[0]
             total_num += num
@@ -47,20 +70,19 @@ def test(args):
 
     print(classification_report(label_list, pred_list, target_names=[str(i) for i in range(219)]))
 
-    
-
     return
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--checkpoint', type=str,
-                        default='04-11-20-01-09',
-                        help='weight path')
-    parser.add_argument('--weight', type=str,
-                        default='ep=0160-acc=0.8607.pth',
-                        help='weight path')
+                        default=['04-11-20-01-09'],
+                        nargs='+', help='weight path')
+    parser.add_argument('--topk', type=int,
+                        default=[3],
+                        nargs='+', help='weight of topk accuracy')
+    
     args = parser.parse_args()
-    config = load_json(os.path.join('checkpoint', args.checkpoint, 'config.json'))
+    config = load_json(os.path.join('checkpoint', args.checkpoint[0], 'config.json'))
     args = argparse.Namespace(**vars(args), **config)
     test(args)
