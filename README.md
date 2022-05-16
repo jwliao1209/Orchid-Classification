@@ -46,7 +46,7 @@ python train.py --model Swin --pretrain 1 --img_size 384 -bs 64 --lr 3e-4
 ## Testing
 To test the results, you can run this command:
 ```
-python test.py --checkpoint <XX-XX-XX-XX-XX> --weight <ep=XXXX-acc=0.XXXX.pth>
+python test.py --checkpoint <XX-XX-XX-XX-XX> --topk <number of model you want to ensemble>
 ```
 
 
