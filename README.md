@@ -51,93 +51,190 @@ python test.py --checkpoint <XX-XX-XX-XX-XX> --weight <ep=XXXX-acc=0.XXXX.pth>
 
 
 ## Experiment results
+Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), RandomRotation(degree=10), Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)), RandomNoise(p=0.1) and Autoaugmentation as preprocessing.
+
 <table>
   <tr>
-    <td>Checkpoint</td>
-    <td>Model</td>
-    <td>Batch size</td>
-    <td>Epochs</td>
-    <td>Loss</td>
-    <td>Optimizer</td>
-    <td>Scheduler</td>
-    <td>Augmentation</td>
-    <td>Best val acc</td>
+    <td>checkpoint</td>
+    <td>model</td>
+    <td>bs</td>
+    <td>loss</td>
+    <td>optimizer</td>
+    <td>scheduler</td>
+    <td>val acc</td>
     <td>test acc</td>
   </tr>
   <tr>
-    <td>04-11-18-49-39</td>
-    <td>EfficientNet-b4</td>
-    <td>32</td>
-    <td>200</td>
-    <td>CE</td>
-    <td>AdamW (lr=1e-3,  weight decay=1e-4)</td>
-    <td>Step (size=3, gamma=0.8)</td>
-    <td>RandomResizedCrop(416),<br>RandomHorizontalFlip(p=0.5),<br>RandomRotation(degree=10),<br>Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))</td>
-    <td>85.62 (ep=75) </td>
-    <td>84.27 </td>
-  </tr>
-  <tr>
-    <td>04-11-20-01-09</td>
-    <td>EfficientNet-b4</td>
-    <td>32</td>
-    <td>200</td>
-    <td>FLSD</td>
-    <td>AdamW (lr=1e-3,  weight decay=1e-4)</td>
-    <td>Step (size=3, gamma=0.8)</td>
-    <td>RandomResizedCrop(416),<br>RandomHorizontalFlip(p=0.5),<br>RandomRotation(degree=10),<br>Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))</td>
-    <td>86.07 (ep=160)</td>
-    <td>85.85</td>
-  </tr>
-    <tr>
-    <td>04-11-21-51-39</td>
-    <td>EfficientNet-b4</td>
-    <td>32</td>
-    <td>200</td>
-    <td>MCCE</td>
-    <td>AdamW (lr=1e-3,  weight decay=1e-4)</td>
-    <td>Step (size=3, gamma=0.8)</td>
-    <td>RandomResizedCrop(416),<br>RandomHorizontalFlip(p=0.5),<br>RandomRotation(degree=10),<br>Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))</td>
-    <td>84.93 (ep=107)</td>
-    <td>83.79 </td>
-  </tr>
-  <tr>
     <td>04-11-23-42-37</td>
-    <td>EfficientNet-b4</td>
+    <td>EfficientNet-B4</td>
     <td>16</td>
-    <td>200</td>
     <td>CE</td>
-    <td>AdamW (lr=1e-3,  weight decay=1e-4)</td>
-    <td>Step (size=3, gamma=0.8)</td>
-    <td>RandomResizedCrop(416),<br>RandomHorizontalFlip(p=0.5),<br>RandomRotation(degree=10),<br>Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))</td>
-    <td>86.30 (ep=36)</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step</td>
+    <td>0.8630</td>
     <td> </td>
   </tr>
   <tr>
     <td>04-11-23-58-50</td>
-    <td>EfficientNet-b4</td>
+    <td>EfficientNet-B4</td>
     <td>16</td>
-    <td>200</td>
     <td>MCCE</td>
-    <td>AdamW (lr=1e-3,  weight decay=1e-4)</td>
-    <td>Step (size=3, gamma=0.8)</td>
-    <td>RandomResizedCrop(416),<br>RandomHorizontalFlip(p=0.5),<br>RandomRotation(degree=10),<br>Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))<br>RandomNoise(p=0.1)</td>
-    <td>85.84 (ep=92)</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step</td>
+    <td>0.8584</td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>04-12-00-14-06</td>
+    <td>EfficientNet-B4</td>
+    <td>32</td>
+    <td>FLSD</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step</td>
+    <td>0.8607</td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>04-12-00-14-06</td>
+    <td>EfficientNet-B4</td>
+    <td>32</td>
+    <td>FLSD</td>
+    <td>AdamW (lr=5e-3)</td>
+    <td>Step</td>
+    <td>0.8402</td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>04-12-01-49-02</td>
+    <td>EfficientNet-B4</td>
+    <td>32</td>
+    <td>CE</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step</td>
+    <td>0.8402</td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>04-12-02-08-09</td>
+    <td>EfficientNet-B4</td>
+    <td>8</td>
+    <td>CE</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step</td>
+    <td>0.8447 </td>
     <td> </td>
   </tr>
   <tr>
     <td>04-12-02-09-10</td>
-    <td>EfficientNet-b4</td>
+    <td>EfficientNet-B4</td>
     <td>16</td>
-    <td>200</td>
     <td>FL</td>
-    <td>AdamW (lr=1e-3,  weight decay=1e-4)</td>
-    <td>Step (size=3, gamma=0.8)</td>
-    <td>RandomResizedCrop(416),<br>RandomHorizontalFlip(p=0.5),<br>RandomRotation(degree=10),<br>Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))<br>RandomNoise(p=0.1)</td>
-    <td>86.99 (ep=92)</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step</td>
+    <td>0.8699 </td>
     <td> </td>
   </tr>
-</table>
-
+  <tr>
+    <td>04-12-02-19-38</td>
+    <td>EfficientNet-B4</td>
+    <td>16</td>
+    <td>FLSD</td>
+    <td>AdamW (lr=1e-3)</td>
+    <td>Step</td>
+    <td>0.8470 </td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>04-12-16-01-10</td>
+    <td>Swin</td>
+    <td>32</td>
+    <td>CE</td>
+    <td>AdamW (lr=3e-4)</td>
+    <td>Step</td>
+    <td>0.8927 </td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-13-19-57-43</td>
+    <td>Swin</td>
+    <td>32</td>
+    <td>FL</td>
+    <td>AdamW (lr=3e-4)</td>
+    <td>Step</td>
+    <td>0.9110 </td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-13-19-57-43</td>
+    <td>Swin</td>
+    <td>64</td>
+    <td>FL</td>
+    <td>AdamW (lr=3e-4)</td>
+    <td>Step</td>
+    <td>0.9110</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-19-13-58-40</td>
+    <td>ConvNext-B</td>
+    <td>64</td>
+    <td>FL</td>
+    <td>AdamW (lr=3e-4)</td>
+    <td>Step</td>
+    <td>0.8836</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-19-21-12-43</td>
+    <td>ConvNext-B</td>
+    <td>64</td>
+    <td>FL</td>
+    <td>AdamW (lr=3e-4)</td>
+    <td>Step</td>
+    <td>0.8699</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-19-21-12-43</td>
+    <td>ConvNext-B</td>
+    <td>64</td>
+    <td>FLSD</td>
+    <td>AdamW (lr=3e-4)</td>
+    <td>Step</td>
+    <td>0.8836</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-27-17-28-28</td>
+    <td>CSwin</td>
+    <td>32</td>
+    <td>FL</td>
+    <td>AdamW (lr=3e-5)</td>
+    <td>Step</td>
+    <td>0.8676</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-27-19-58-18</td>
+    <td>CSwin</td>
+    <td>32</td>
+    <td>FL</td>
+    <td>AdamW (lr=1e-4)</td>
+    <td>Step</td>
+    <td>0.8858</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>04-27-21-12-57</td>
+    <td>CSwin</td>
+    <td>32</td>
+    <td>FL</td>
+    <td>AdamW (lr=8e-5)</td>
+    <td>Step</td>
+    <td>0.8744</td>
+    <td> - </td>
+  </tr>
+<table>
 
 ## GitHub Acknowledgement
 We thank the authors of these repositories:
