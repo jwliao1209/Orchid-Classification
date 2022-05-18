@@ -1,5 +1,6 @@
 import argparse, os, zipfile
 import gdown
+import pandas as pd
 
 def get_working_list(data_root):
     gdrive_id = [
@@ -49,6 +50,9 @@ def main(data_root):
         if output.endswith(".zip"):
             with zipfile.ZipFile(output, 'r') as zip_ref:
                 zip_ref.extractall(image_dir)
+        else:
+            df = pd.read_csv(output, names=["filename", "category"])
+            df.to_csv(output, index=False)
 
     os.rename(
         os.path.join(image_dir, "label.csv"),
