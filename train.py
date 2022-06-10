@@ -27,14 +27,12 @@ def train(args):
 
     mean = (0.485, 0.456, 0.406)
     std = (0.229, 0.224, 0.225)
-
     train_loader, val_loader = get_train_val_loader(args)
-
     model = get_model(args)
-    model = get_pretrain(model, args)
+    get_pretrain(model, args)
     model = nn.DataParallel(model, device_ids=args.device)
     model.to(device)
-
+ 
     criterion = get_criterion(args, device)
     optimizer = get_optimizer(args, model)
     lr_scheduler = get_scheduler(args, optimizer)
@@ -75,6 +73,8 @@ def train(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
+    parser.add_argument('--fold', type=int, default=1,
+                        help='fold')
     parser.add_argument('-bs', '--batch_size', type=int, default=32,
                         help='batch size')
     parser.add_argument('-ep', '--epoch', type=int, default=200,

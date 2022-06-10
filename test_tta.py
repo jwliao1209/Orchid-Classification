@@ -3,12 +3,14 @@ import argparse
 from tqdm import tqdm
 
 import torch
+import torch.nn as nn
 import torchvision
 from src.config import *
 from src.dataset import get_test_loader
 from src.trainer import compute_acc
 from src.utils import *
 from sklearn.metrics import classification_report
+import ttach as tta
 
 
 def get_topk_ckpt(weight_path, topk):
@@ -51,8 +53,17 @@ def test(args):
             image = image.to(device)
             label = label.to(device)
 
-            pred = torch.mean(torch.stack([m(image) for m in models], dim=0), dim=0)
+            tta_transforms = tta.Compose([
+                tta.HorizontalFlip(),
+                tta.FiveCrops(args.img_size, args.img_size)
+                ])
 
+            pred = []
+            for m in models:
+                tta_model = tta.ClassificationTTAWrapper(m, tta_transforms)
+                pred.append(torch.nn.functional.softmax(tta_model(image), dim=1))
+
+            pred = torch.mean(torch.stack(pred, dim=0), dim=0)
             acc = compute_acc(pred, label)
             num = image.shape[0]
             total_num += num
