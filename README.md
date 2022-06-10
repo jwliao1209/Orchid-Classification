@@ -27,7 +27,7 @@ python train.py -bs <batch size> \
                 --device <gpu id> \
                 --seed <random seed>
 ```
-- model: EfficientB4, Swin
+- model: EfficientB4, Swin, CSwin, ConvB
 - loss: CE, MCCE, FL, FLSD
 - optim: SGD, Adam, AdamW, Ranger
 - scheduler: step (gamma, step_size), cos
@@ -61,8 +61,7 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>loss</td>
     <td>optimizer</td>
     <td>scheduler</td>
-    <td>val acc</td>
-    <td>test acc</td>
+    <td>accuracy</td>
   </tr>
   <tr>
     <td>04-11-23-42-37</td>
@@ -72,7 +71,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=1e-3)</td>
     <td>Step</td>
     <td>0.8630</td>
-    <td> </td>
   </tr>
   <tr>
     <td>04-11-23-58-50</td>
@@ -82,7 +80,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=1e-3)</td>
     <td>Step</td>
     <td>0.8584</td>
-    <td> </td>
   </tr>
   <tr>
     <td>04-12-00-14-06</td>
@@ -92,7 +89,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=1e-3)</td>
     <td>Step</td>
     <td>0.8607</td>
-    <td> </td>
   </tr>
   <tr>
     <td>04-12-00-14-06</td>
@@ -102,7 +98,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=5e-3)</td>
     <td>Step</td>
     <td>0.8402</td>
-    <td> </td>
   </tr>
   <tr>
     <td>04-12-01-49-02</td>
@@ -112,7 +107,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=1e-3)</td>
     <td>Step</td>
     <td>0.8402</td>
-    <td> </td>
   </tr>
   <tr>
     <td>04-12-02-08-09</td>
@@ -122,7 +116,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=1e-3)</td>
     <td>Step</td>
     <td>0.8447 </td>
-    <td> </td>
   </tr>
   <tr>
     <td>04-12-02-09-10</td>
@@ -132,7 +125,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=1e-3)</td>
     <td>Step</td>
     <td>0.8699 </td>
-    <td> </td>
   </tr>
   <tr>
     <td>04-12-02-19-38</td>
@@ -142,7 +134,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=1e-3)</td>
     <td>Step</td>
     <td>0.8470 </td>
-    <td> </td>
   </tr>
   <tr>
     <td>04-12-16-01-10</td>
@@ -152,7 +143,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=3e-4)</td>
     <td>Step</td>
     <td>0.8927 </td>
-    <td> - </td>
   </tr>
   <tr>
     <td>04-13-19-57-43</td>
@@ -162,7 +152,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=3e-4)</td>
     <td>Step</td>
     <td>0.9110 </td>
-    <td> - </td>
   </tr>
   <tr>
     <td>04-13-19-57-43</td>
@@ -172,7 +161,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=3e-4)</td>
     <td>Step</td>
     <td>0.9110</td>
-    <td> - </td>
   </tr>
   <tr>
     <td>04-19-13-58-40</td>
@@ -182,7 +170,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=3e-4)</td>
     <td>Step</td>
     <td>0.8836</td>
-    <td> - </td>
   </tr>
   <tr>
     <td>04-19-21-12-43</td>
@@ -192,7 +179,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=3e-4)</td>
     <td>Step</td>
     <td>0.8699</td>
-    <td> - </td>
   </tr>
   <tr>
     <td>04-19-21-12-43</td>
@@ -202,7 +188,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=3e-4)</td>
     <td>Step</td>
     <td>0.8836</td>
-    <td> - </td>
   </tr>
   <tr>
     <td>04-27-17-28-28</td>
@@ -212,7 +197,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=3e-5)</td>
     <td>Step</td>
     <td>0.8676</td>
-    <td> - </td>
   </tr>
   <tr>
     <td>04-27-19-58-18</td>
@@ -222,7 +206,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=1e-4)</td>
     <td>Step</td>
     <td>0.8858</td>
-    <td> - </td>
   </tr>
   <tr>
     <td>04-27-21-12-57</td>
@@ -232,7 +215,6 @@ Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), Ran
     <td>AdamW (lr=8e-5)</td>
     <td>Step</td>
     <td>0.8744</td>
-    <td> - </td>
   </tr>
 <table>
 
@@ -248,7 +230,7 @@ We thank the authors of these repositories:
 ```
 @misc{
     title  = {orchid_classification},
-    author = {Jia-Wei Liao, Yu-Hsi Chen, Jing-Lun Huang, Kuok-Tong Ng},
+    author = {Jia-Wei Liao, Yu-Hsi Chen, Jing-Lun Huang},
     url    = {https://github.com/Jia-Wei-Liao/Orchid_Classification},
     year   = {2022}
 }
