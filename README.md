@@ -13,6 +13,7 @@ python train.py -bs <batch size> \
                 -ep <epoch> \
                 --model <model> \
                 --pretrain <using pretrained-weight> \
+                --fold <fold of 4 fold cross validation>
                 --img_size <crop and resize to img_size> \
                 --loss <loss function> \
                 --optim <optimizer> \
