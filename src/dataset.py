@@ -18,7 +18,7 @@ def get_train_val_loader(args):
         AutoAugmentation(opt=args.autoaugment),
         ToTensor(),
         Normalize(mean, std),
-        #GridMask(),
+        GridMask(),
         RandomNoise(p=args.noise)
         
     ])
@@ -30,8 +30,8 @@ def get_train_val_loader(args):
     ])
 
     data_dir = './datasets'
-    train_set = datasets.ImageFolder(os.path.join(data_dir, 'train'), transform=train_transform)
-    val_set = datasets.ImageFolder(os.path.join(data_dir, 'val'), transform=val_transform)
+    train_set = datasets.ImageFolder(os.path.join(data_dir, f'fold{args.fold}', 'train'), transform=train_transform)
+    val_set = datasets.ImageFolder(os.path.join(data_dir, f'fold{args.fold}', 'val'), transform=val_transform)
     train_loader = DataLoader(train_set, batch_size=args.batch_size, shuffle=True, num_workers=args.num_workers)
     val_loader = DataLoader(val_set, batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers)
 
@@ -43,15 +43,16 @@ def get_test_loader(args):
     std = (0.229, 0.224, 0.225)
 
     test_transform = Compose([
-        CenterCrop(args.img_size),
+        CenterCrop(480), # (args.img_size)
         ToTensor(),
         Normalize(mean, std),
     ])
 
     data_dir = './datasets'
-    test_set = datasets.ImageFolder(os.path.join(data_dir, 'test'), transform=test_transform)
-    test_loader = DataLoader(test_set, batch_size=32, shuffle=True, num_workers=4)
+    test_set = datasets.ImageFolder(os.path.join(data_dir, f'fold{args.fold}', 'test'), transform=test_transform)
+    test_loader = DataLoader(test_set, batch_size=64, shuffle=False, num_workers=4)
+    img_list = [os.path.basename(list(test_set.imgs[i])[0]) for i in range(len(test_set))]
 
-    return test_loader
+    return test_loader, img_list
     
 

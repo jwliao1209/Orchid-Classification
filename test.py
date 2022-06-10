@@ -50,9 +50,7 @@ def test(args):
             image, label = batch_data
             image = image.to(device)
             label = label.to(device)
-
             pred = torch.mean(torch.stack([m(image) for m in models], dim=0), dim=0)
-
             acc = compute_acc(pred, label)
             num = image.shape[0]
             total_num += num

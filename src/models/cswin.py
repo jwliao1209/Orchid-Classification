@@ -5,11 +5,12 @@
 # written By Xiaoyi Dong
 # ------------------------------------------
 
-
+import os
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from functools import partial
+from collections import OrderedDict
 
 from timm.data import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
 from timm.models.helpers import load_pretrained
@@ -376,28 +377,28 @@ def _conv_filter(state_dict, patch_size=16):
 @register_model
 def CSWin_64_12211_tiny_224(pretrained=False, **kwargs):
     model = CSWinTransformer(patch_size=4, embed_dim=64, depth=[1,2,21,1],
-        split_size=[1,2,7,7], num_heads=[2,4,8,16], mlp_ratio=4., **kwargs)
+        split_size=[1,2,7,7], num_heads=[2,4,8,16], mlp_ratio=4.)
     model.default_cfg = default_cfgs['cswin_224']
     return model
 
 @register_model
 def CSWin_64_24322_small_224(pretrained=False, **kwargs):
     model = CSWinTransformer(patch_size=4, embed_dim=64, depth=[2,4,32,2],
-        split_size=[1,2,7,7], num_heads=[2,4,8,16], mlp_ratio=4., **kwargs)
+        split_size=[1,2,7,7], num_heads=[2,4,8,16], mlp_ratio=4.)
     model.default_cfg = default_cfgs['cswin_224']
     return model
 
 @register_model
 def CSWin_96_24322_base_224(pretrained=False, **kwargs):
     model = CSWinTransformer(patch_size=4, embed_dim=96, depth=[2,4,32,2],
-        split_size=[1,2,7,7], num_heads=[4,8,16,32], mlp_ratio=4., **kwargs)
+        split_size=[1,2,7,7], num_heads=[4,8,16,32], mlp_ratio=4.)
     model.default_cfg = default_cfgs['cswin_224']
     return model
 
 @register_model
 def CSWin_144_24322_large_224(pretrained=False, **kwargs):
     model = CSWinTransformer(patch_size=4, embed_dim=144, depth=[2,4,32,2],
-        split_size=[1,2,7,7], num_heads=[6,12,24,24], mlp_ratio=4., **kwargs)
+        split_size=[1,2,7,7], num_heads=[6,12,24,24], mlp_ratio=4.)
     model.default_cfg = default_cfgs['cswin_224']
     return model
 
@@ -406,13 +407,68 @@ def CSWin_144_24322_large_224(pretrained=False, **kwargs):
 @register_model
 def CSWin_96_24322_base_384(pretrained=False, **kwargs):
     model = CSWinTransformer(patch_size=4, embed_dim=96, depth=[2,4,32,2],
-        split_size=[1,2,12,12], num_heads=[4,8,16,32], mlp_ratio=4., **kwargs)
+        split_size=[1,2,12,12], num_heads=[4,8,16,32], mlp_ratio=4.)
     model.default_cfg = default_cfgs['cswin_384']
     return model
 
 @register_model
 def CSWin_144_24322_large_384(pretrained=False, **kwargs):
     model = CSWinTransformer(patch_size=4, embed_dim=144, depth=[2,4,32,2],
-        split_size=[1,2,12,12], num_heads=[6,12,24,24], mlp_ratio=4., **kwargs)
+        split_size=[1,2,12,12], num_heads=[6,12,24,24], mlp_ratio=4.)
     model.default_cfg = default_cfgs['cswin_384']
+    return model
+
+
+def load_cswin_checkpoint(model, use_ema=True):
+    fine_22k =  False
+    local_rank = 0
+    checkpoint_path = './src/models/pretrain_weight/cswin_base_384.pth'
+
+    if checkpoint_path and os.path.isfile(checkpoint_path):
+        checkpoint = torch.load(checkpoint_path, map_location='cpu')
+        state_dict_key = 'state_dict'
+        model_key = 'model'
+        if isinstance(checkpoint, dict):
+            if use_ema and 'state_dict_ema' in checkpoint:
+                state_dict_key = 'state_dict_ema'
+        if state_dict_key and state_dict_key in checkpoint:
+            new_state_dict = OrderedDict()
+            for k, v in checkpoint[state_dict_key].items():
+                # strip `module.` prefix
+                name = k[7:] if k.startswith('module') else k
+                if fine_22k and 'head' in k:
+                    continue
+                new_state_dict[name] = v
+            state_dict = new_state_dict
+        elif model_key and model_key in checkpoint:
+            new_state_dict = OrderedDict()
+            for k, v in checkpoint[model_key].items():
+                # strip `module.` prefix
+                name = k[7:] if k.startswith('module') else k
+                if fine_22k and 'head' in k:
+                    continue
+                new_state_dict[name] = v
+            state_dict = new_state_dict
+
+        else:
+            state_dict = checkpoint
+        if local_rank == 0:
+            print("Loaded {} from checkpoint '{}'".format(state_dict_key, checkpoint_path))
+    else:
+        if local_rank == 0:
+            print("No checkpoint found at '{}'".format(checkpoint_path))
+        raise FileNotFoundError()
+    model_dict = model.state_dict()
+    pretrained_dict = state_dict
+    loaded_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
+    load_dic = [k for k, v in pretrained_dict.items() if k in model_dict]
+    miss_dic = [k for k, v in pretrained_dict.items() if not (k in model_dict)]
+    unexpect_dic = [k for k, v in model_dict.items() if not (k in pretrained_dict)]
+    if local_rank == 0:
+        print ("Miss Keys:", miss_dic)
+        print ("Ubexpected Keys:", unexpect_dic)
+    model_dict.update(loaded_dict)
+    model.load_state_dict(model_dict, strict=True)
+    model.head = nn.Linear(model.head.in_features, 219)
+
     return model

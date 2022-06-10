@@ -3,33 +3,30 @@ import torch.nn as nn
 
 from src.losses import FL, MCCE
 from src.optimizer import ranger21
-from src.models.build import build_model
-from src.models.swin_utils import load_pretrained
-from src.models.efficientnet_b4 import *
-from src.models.cswin import CSWin_96_24322_base_384
-from src.models.cswin_load import load_checkpoint
+
+from src.models.swin import SwinTransformer, load_swin_pretrained
+from src.models.cswin import CSWin_96_24322_base_384, load_cswin_checkpoint
+from src.models.convnext import ConvNeXt_B
+from src.models.efficientnet_b4 import EfficientNetB4
 
 
 def get_model(args):
     Model = {
-        'EfficientB4': EfficientNet_b4,
-        'Swin': build_model,
         'ConvB': ConvNeXt_B,
-        'CSwin': CSWin_96_24322_base_384
+        'Swin': SwinTransformer,
+        'CSwin': CSWin_96_24322_base_384,
+        'EfficientB4': EfficientNetB4
     }
-    model = Model[args.model](args.num_classes)
+    model = Model[args.model](num_classes=args.num_classes)
+
+    if args.pretrain and args.model in ['Swin', 'CSwin']:
+        Weight = {
+            'Swin': load_swin_pretrained,
+            'CSwin': load_cswin_checkpoint
+        }
+        model = Weight[args.model](model)
 
     return model
-
-
-def get_pretrain(model, args):
-    if args.pretrain:
-        Weight = {
-            'Swin': load_pretrained,
-            'CSwin': load_checkpoint
-        }
-
-    return Weight[args.model](model)
 
 
 def get_criterion(args, device):
