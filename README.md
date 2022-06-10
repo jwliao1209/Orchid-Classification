@@ -27,7 +27,7 @@ python train.py -bs <batch size> \
                 --device <gpu id> \
                 --seed <random seed>
 ```
-- model: EfficientB4, Swin, CSwin
+- model: EfficientB4, Swin, CSwin, ConvB
 - loss: CE, MCCE, FL, FLSD
 - optim: SGD, Adam, AdamW, Ranger
 - scheduler: step (gamma, step_size), cos
