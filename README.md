@@ -230,7 +230,7 @@ We thank the authors of these repositories:
 ```
 @misc{
     title  = {orchid_classification},
-    author = {Jia-Wei Liao, Yu-Hsi Chen, Jing-Lun Huang, Kuok-Tong Ng},
+    author = {Jia-Wei Liao, Yu-Hsi Chen, Jing-Lun Huang},
     url    = {https://github.com/Jia-Wei-Liao/Orchid_Classification},
     year   = {2022}
 }
