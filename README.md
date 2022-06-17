@@ -1,4 +1,4 @@
-# Orchid_Classification
+# Few-Shot_Orchid_types_Classification
 
 ## Getting the code
 You can download all the files in this repository by cloning this repository:  
