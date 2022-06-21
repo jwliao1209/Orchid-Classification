@@ -58,8 +58,13 @@ python test.py --checkpoint <XX-XX-XX-XX-XX> --topk <number of model you want to
 
 ## Inference
 To inference the results, you can run this command:
+Version 1:
 ```
-bash inference.sh
+python inference.py --checkpoint 06-06-10-04-43 06-06-10-03-00 06-06-09-29-55 06-06-07-46-11 06-06-05-29-11 --topk 2 1 1 2 3
+```
+Version 2:
+```
+python inference.py --checkpoint 05-11-23-12-52 05-12-02-24-32 05-12-05-36-53 05-12-04-58-22 05-12-01-46-14 05-11-22-34-25 05-12-03-41-16 05-12-00-29-30 06-06-11-22-42 06-06-06-00-22 --topk 5 1 2 1 2 1 1 1 1 1
 ```
 
 
