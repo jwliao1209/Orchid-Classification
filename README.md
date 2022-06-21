@@ -6,6 +6,12 @@ You can download all the files in this repository by cloning this repository:
 git clone https://github.com/Jia-Wei-Liao/Orchid_Classification.git
 ```
 
+## Download
+- You can download the dataset on the Google Drive:  
+https://drive.google.com/drive/folders/1iNrKzPCQRLAJy1gR0hfA7L_y-6TRB2bg?usp=sharing
+- You can download the checkpoint on the Google Drive:  
+https://drive.google.com/drive/folders/1fzuG2sy1vxOeA5M0BDUZJTXl3GS0wA-O?usp=sharing
+
 ## Training
 To train the model, you can run this command:
 ```
@@ -48,6 +54,12 @@ python train.py --model Swin --pretrain 1 --img_size 384 -bs 64 --lr 3e-4
 To test the results, you can run this command:
 ```
 python test.py --checkpoint <XX-XX-XX-XX-XX> --topk <number of model you want to ensemble>
+```
+
+## Inference
+To inference the results, you can run this command:
+```
+bash inference.sh
 ```
 
 
