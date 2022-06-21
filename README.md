@@ -242,6 +242,7 @@ We thank the authors of these repositories:
 - FLSD: https://github.com/torrvision/focal_calibration  
 - Ranger21: https://github.com/lessw2020/Ranger21  
 - AutoAugment: https://github.com/DeepVoltaire/AutoAugment  
+- https://github.com/TW-yuhsi/ViT-Orchids-Classification
 
 
 ## Citation
