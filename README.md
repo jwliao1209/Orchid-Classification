@@ -67,6 +67,11 @@ python inference.py --checkpoint 06-06-10-04-43 06-06-10-03-00 06-06-09-29-55 06
 python inference.py --checkpoint 05-11-23-12-52 05-12-02-24-32 05-12-05-36-53 05-12-04-58-22 05-12-01-46-14 05-11-22-34-25 05-12-03-41-16 05-12-00-29-30 06-06-11-22-42 06-06-06-00-22 --topk 5 1 2 1 2 1 1 1 1 1
 ```
 
+Finally, you must convert the id to the label by runing this command:
+```
+python convert.py
+```
+
 
 ## Experiment results
 Before training, we use RandomResizedCrop(416), RandomHorizontalFlip(p=0.5), RandomRotation(degree=10), Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)), RandomNoise(p=0.1) and Autoaugmentation as preprocessing.
