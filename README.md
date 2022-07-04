@@ -251,7 +251,7 @@ We thank the authors of these repositories:
 
 
 ## Citation
-```
+```bibtex
 @misc{
     title  = {orchid_classification},
     author = {Jia-Wei Liao, Yu-Hsi Chen, Jing-Lun Huang},
