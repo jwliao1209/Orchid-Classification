@@ -55,7 +55,7 @@ def init_model(models, ckpts, device):
     return models
 
 
-def test(args, mode):
+def test(args):
     public_loader,  public_list = get_test_loader(args, 'public')
     private_loader, private_list = get_test_loader(args, 'private')
     
@@ -130,9 +130,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--checkpoint', type=str,
                         default=['05-12-05-36-53'],
-                        nargs='+', help='weight path')
-    parser.add_argument('--mode', type=str,
-                        default='p',
                         nargs='+', help='weight path')
     parser.add_argument('--topk', type=int,
                         default=[3],
